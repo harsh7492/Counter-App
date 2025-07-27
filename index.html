@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter-App</title>
+    <style>
+        body {
+            background-color: lightgrey;
+        }
+
+        .container {
+            height: 530px;
+            width: 450px;
+            border-radius: 2%;
+            border: 2px solid whitesmoke;
+            margin-top: 50px;
+            margin-left: 500px;
+            background-color: whitesmoke;
+        }
+
+        .counter {
+            height: 50%;
+            width: 90%;
+            border-radius: 2%;
+            border: 2px solid lightsalmon;
+            margin: auto;
+            background-color: lightsalmon;
+            margin-top: 20px;
+        }
+
+        .Counter-App {
+            text-align: center;
+            font-size: 200px;
+
+        }
+
+        #btn-1 {
+            height: 70px;
+            width: 80px;
+            border-radius: 2%;
+            border: 2px solid gray;
+            margin-left: 100px;
+            margin-top: 35px;
+            font-size: 40px;
+            font-style: oblique;
+            background-color: chartreuse;
+        }
+
+        #btn-2 {
+            height: 70px;
+            width: 80px;
+            border-radius: 2%;
+            border: 2px solid gray;
+            margin-left: 75px;
+            font-size: 40px;
+            margin-top: 35px;
+            font-style: oblique;
+            background-color: red;
+        }
+
+        #Add {
+            height: 40px;
+            width: 70px;
+            font-size: 20px;
+            border-radius: 2%;
+            border: 2px solid gray;
+            margin-left: 100px;
+        }
+
+        #Sub {
+            height: 40px;
+            width: 70px;
+            font-size: 20px;
+            border-radius: 2%;
+            border: 2px solid gray;
+            margin-left: 80px;
+        }
+
+        #btn-3 {
+            width: 80px;
+            height: 30px;
+            font-size: larger;
+            border-radius: 2%;
+            border: 2px solid gray;
+            background-color: chartreuse;
+            margin-left: 100px;
+
+        }
+
+        #btn-4 {
+            width: 80px;
+            height: 30px;
+            margin-left: 80px;
+            font-size: larger;
+            border-radius: 2%;
+            border: 2px solid gray;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="counter">
+            <div class="Counter-App">0</div>
+        </div>
+        <button id="btn-1" onclick="Increment()">+</button>
+        <button id="btn-2" onclick="Decrement()">-</button>
+        <br><br>
+        <input type="number" name="Add" id="Add">
+        <input type="number" name="Add" id="Sub">
+        <br><br>
+        <button id="btn-3" onclick="InputIncrement()">Add</button>
+        <button id="btn-4" onclick="InputDecrement()">Sub</button>
+    </div>
+
+    <script>
+        let count = parseInt(document.querySelector('.Counter-App').innerText);
+
+        function Increment() {
+            if (count < 1000) {
+                count = count + 1;
+                document.querySelector('.Counter-App').innerText = count;
+            }
+
+            else {
+                alert('Counter Value Can Not be Greater Than 1000');
+            }
+        }
+        function Decrement() {
+            if (count > 0) {
+                count = count - 1;
+                document.querySelector('.Counter-App').innerText = count;
+            } else {
+                alert('Counter Value Can Not be negative');
+            }
+
+        }
+        function InputIncrement() {
+            let add = document.querySelector('#Add').value;
+            add = Number(add);
+            document.querySelector('#Add').value = '';
+            if (add <= 1000 && add > 0) {
+                if (count < 1000) {
+                    count = count + add;
+                    document.querySelector('.Counter-App').innerText = count;
+                }
+                else
+                    alert('Counter Value Can Not be Greater Than 1000');
+            }
+            if (add < 0)
+                alert('Input Value Must be Greater Than 0');
+            if (add > 1000)
+                alert('Input Value Can Not be Greater Than 1000');
+
+        }
+        function InputDecrement() {
+            let sub = document.querySelector('#Sub').value;
+            sub = Number(sub);
+            document.querySelector('#Sub').value = '';
+            if (count > 0 && sub > 0) {
+                count = count - sub;
+                if (count >= 0) {
+                    document.querySelector('.Counter-App').innerText = count;
+                }
+                else {
+                    alert('Counter Value Can Not be negative');
+                    document.querySelector('.Counter-App').innerText = 0;
+
+                }
+            }
+            else if (sub < 0)
+                alert('Input Value Must be Greater Than 0');
+            else {
+                alert('Counter Value Can Not be negative');
+            }
+        }
+    </script>
+</body>
+
+</html>
